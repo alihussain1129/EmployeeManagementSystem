@@ -1,0 +1,28 @@
+﻿<Window x:Class="EmployeeManagementSystem.Views.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Login - Employee Management System"
+        Height="420" Width="360"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="{StaticResource BackgroundBrush}">
+
+    <Border Style="{StaticResource CardBorder}" Margin="24" VerticalAlignment="Center">
+        <StackPanel>
+            <TextBlock Text="EMS Login" FontSize="22" FontWeight="Bold" Margin="0,0,0,4"/>
+            <TextBlock Text="Sign in to continue" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,0,0,20"/>
+
+            <TextBlock Text="Username" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}"/>
+            <TextBox x:Name="UsernameBox" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,14"/>
+
+            <TextBlock Text="Password" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}"/>
+            <PasswordBox x:Name="PasswordBox" Padding="8,6" Margin="0,4,0,10" KeyDown="PasswordBox_KeyDown"/>
+
+            <TextBlock Text="{Binding ErrorText}" Foreground="{StaticResource DangerBrush}"
+           FontSize="12" TextWrapping="Wrap" Margin="0,0,0,10"/>
+
+            <Button Content="Login" Style="{StaticResource PrimaryButton}"
+                    Click="LoginButton_Click" Margin="0,6,0,0"/>
+        </StackPanel>
+    </Border>
+</Window>

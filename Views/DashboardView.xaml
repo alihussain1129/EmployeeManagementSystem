@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="EmployeeManagementSystem.Views.DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid Background="{StaticResource BackgroundBrush}" Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="0" Margin="0,0,0,16">
+            <TextBlock Text="Dashboard" FontSize="22" FontWeight="Bold"/>
+            <Button Content="Refresh" Style="{StaticResource SecondaryButton}"
+                    Command="{Binding RefreshCommand}" HorizontalAlignment="Right"
+                    DockPanel.Dock="Right"/>
+        </DockPanel>
+
+        <UniformGrid Grid.Row="1" Columns="4" Rows="1" VerticalAlignment="Top">
+            <Border Style="{StaticResource CardBorder}" Margin="0,0,10,0">
+                <StackPanel>
+                    <TextBlock Text="TOTAL EMPLOYEES" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}" FontWeight="SemiBold"/>
+                    <TextBlock Text="{Binding TotalEmployees}" FontSize="32" FontWeight="Bold" Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{StaticResource CardBorder}" Margin="0,0,10,0">
+                <StackPanel>
+                    <TextBlock Text="ACTIVE EMPLOYEES" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}" FontWeight="SemiBold"/>
+                    <TextBlock Text="{Binding ActiveEmployees}" FontSize="32" FontWeight="Bold" Margin="0,8,0,0" Foreground="{StaticResource SuccessBrush}"/>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{StaticResource CardBorder}" Margin="0,0,10,0">
+                <StackPanel>
+                    <TextBlock Text="DEPARTMENTS" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}" FontWeight="SemiBold"/>
+                    <TextBlock Text="{Binding TotalDepartments}" FontSize="32" FontWeight="Bold" Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{StaticResource CardBorder}">
+                <StackPanel>
+                    <TextBlock Text="PRESENT TODAY" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}" FontWeight="SemiBold"/>
+                    <TextBlock Text="{Binding TodayAttendanceCount}" FontSize="32" FontWeight="Bold" Margin="0,8,0,0" Foreground="{StaticResource AccentBrush}"/>
+                </StackPanel>
+            </Border>
+        </UniformGrid>
+    </Grid>
+</UserControl>

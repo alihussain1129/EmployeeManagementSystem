@@ -1,0 +1,23 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build output
+bin/
+obj/
+
+# Published application
+publish/
+
+# Installer output
+installer_output/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Operating system files
+Thumbs.db
+.DS_Store

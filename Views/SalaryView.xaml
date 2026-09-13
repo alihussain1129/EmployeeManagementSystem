@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="EmployeeManagementSystem.Views.SalaryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<Grid Background="{StaticResource BackgroundBrush}" Margin="20">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="320"/>
+			<ColumnDefinition Width="20"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+
+		<Border Grid.Column="0" Style="{StaticResource CardBorder}" VerticalAlignment="Top">
+			<StackPanel>
+				<TextBlock Text="Salary Record" FontSize="18" FontWeight="Bold" Margin="0,0,0,16"/>
+
+				<TextBlock Text="Employee" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}"/>
+				<ComboBox ItemsSource="{Binding Employees}" DisplayMemberPath="FullName"
+                          SelectedItem="{Binding SelectedEmployee}" Margin="0,4,0,12" Padding="6"/>
+
+				<TextBlock Text="Basic Salary" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}"/>
+				<TextBox Text="{Binding BasicSalary, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,12"/>
+
+				<TextBlock Text="Allowances" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}"/>
+				<TextBox Text="{Binding Allowances, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,12"/>
+
+				<TextBlock Text="Deductions" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}"/>
+				<TextBox Text="{Binding Deductions, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,12"/>
+
+				<TextBlock Text="Effective Month" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}"/>
+				<DatePicker SelectedDate="{Binding EffectiveMonth}" Margin="0,4,0,16"/>
+
+				<UniformGrid Columns="2" Rows="2">
+					<Button Content="Add" Style="{StaticResource PrimaryButton}" Command="{Binding AddCommand}" Margin="0,0,6,6"/>
+					<Button Content="Update" Style="{StaticResource PrimaryButton}" Command="{Binding UpdateCommand}" Margin="6,0,0,6"/>
+					<Button Content="Delete" Style="{StaticResource DangerButton}" Command="{Binding DeleteCommand}" Margin="0,0,6,0"/>
+					<Button Content="Clear" Style="{StaticResource SecondaryButton}" Command="{Binding ClearCommand}" Margin="6,0,0,0"/>
+				</UniformGrid>
+			</StackPanel>
+		</Border>
+
+		<Border Grid.Column="2" Style="{StaticResource CardBorder}">
+			<DataGrid ItemsSource="{Binding Salaries}"
+                      SelectedItem="{Binding SelectedSalary}"
+                      IsReadOnly="True">
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="ID" Binding="{Binding SalaryId}" Width="50"/>
+					<DataGridTextColumn Header="Employee" Binding="{Binding EmployeeName}" Width="*"/>
+					<DataGridTextColumn Header="Basic" Binding="{Binding BasicSalary, StringFormat=N0}" Width="90"/>
+					<DataGridTextColumn Header="Allowances" Binding="{Binding Allowances, StringFormat=N0}" Width="90"/>
+					<DataGridTextColumn Header="Deductions" Binding="{Binding Deductions, StringFormat=N0}" Width="90"/>
+					<DataGridTextColumn Header="Net" Binding="{Binding NetSalary, StringFormat=N0}" Width="90"/>
+					<DataGridTextColumn Header="Month" Binding="{Binding EffectiveMonth, StringFormat=MMM yyyy}" Width="100"/>
+				</DataGrid.Columns>
+			</DataGrid>
+		</Border>
+	</Grid>
+</UserControl>
